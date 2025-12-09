@@ -614,7 +614,24 @@ public abstract class Person {
 }
 ```
 
-3. Create a `Student` class that extends `Person` and implements `Teachable`
+3. Create a `Student` class that extends `Person` and implements `Teachable`:
+   - Add a constructor that takes `name` and `age` parameters
+   - Implement the `introduce()` method (e.g., "Hi, I'm [name] and I'm [age] years old")
+   - Implement the `study()` method (e.g., "[name] is studying hard!")
+   - Implement the `doHomework()` method (e.g., "[name] is doing homework...")
+
+4. Test your `Student` class in the `Main` class:
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create a student
+        Student student = new Student("Alice", 20);
+        
+        // Test the student below by calling introduce(), study(), and doHomework()
+
+    }
+}
+```
 
 ## 4. Practical Applications
 
