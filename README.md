@@ -830,7 +830,7 @@ Through these examples and exercises, we've learned that:
 - Both help write cleaner, more organized code
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#2196F3', 'primaryTextColor': '#0D47A1', 'primaryBorderColor': '#1976D2', 'lineColor': '#4CAF50', 'secondaryColor': '#FF9800', 'tertiaryColor': '#E3F2FD'}}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1565C0', 'primaryTextColor': '#FFFFFF', 'primaryBorderColor': '#0D47A1', 'lineColor': '#2E7D32', 'secondaryColor': '#E65100', 'tertiaryColor': '#1565C0', 'fontSize': '16px'}}}%%
 mindmap
     root((🎯 ABSTRACTION))
         🔷 Abstract Classes
