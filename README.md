@@ -289,7 +289,7 @@ flowchart LR
         I["Standard Connection<br/>Contract"]
     end
     
-    subgraph devices["🏠 DEVICES)"]
+    subgraph devices["🏠 DEVICES"]
         style devices fill:#FFF3E0,stroke:#E65100,stroke-width:3px,color:#BF360C
         D1["💻 Laptop"]
         D2["📱 Phone Charger"]
@@ -453,7 +453,7 @@ flowchart TB
             I2["❌ No constructors"]
             I3["❌ No instance variables*"]
             I4["✅ Default methods (Java 8+)"]
-            I5["✅ Multiple implementation"]
+            I5["✅ Multiple implementations"]
             I6["🎯 Use for: Unrelated objects<br/>sharing behavior"]
         end
     end
@@ -842,7 +842,7 @@ mindmap
         🟡 Interfaces
             CAN-DO Relationship
             Define Contracts
-            Multiple Implementation
+            Multiple Implementations
             No Constructors
             No Instance State
         🎨 Benefits
