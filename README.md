@@ -1,21 +1,20 @@
 # Java Abstraction Lab
 
 ## Table of Contents
-1. [Understanding Abstraction](#1-understanding-abstraction)
-2. [Abstract Classes](#2-abstract-classes)
-3. [Interfaces](#3-interfaces)
-4. [Abstract Classes vs. Interfaces](#4-abstract-classes-vs-interfaces)
-5. [Practical Applications](#5-practical-applications)
+1. [Abstract Classes](#1-abstract-classes)
+2. [Interfaces](#2-interfaces)
+3. [Abstract Classes vs. Interfaces](#3-abstract-classes-vs-interfaces)
+4. [Practical Applications](#4-practical-applications)
 
 ## Lab Setup
 1. Create a package called `ie.atu.abstraction`
 2. Create a `Main` class with a main() method inside this package
 3. Place all the below classes from the DIY sections into this package and test all your code in the `Main` class.
 
-## 1. Understanding Abstraction
+## 1. Abstract Classes
 
 ### Learning Objective
-Understand what abstraction is and how it helps us write better code by hiding complicated details.
+Understand what abstraction is and how abstract classes help us write better code by hiding complicated details and creating blueprints for related objects.
 
 ### Real-World Example
 Think about driving a car. To drive a car, you only need to know about:
@@ -57,7 +56,40 @@ flowchart TB
 
 > **Key Concept:** Abstraction is like the dashboard of a car — it shows you only what you need to operate the vehicle while hiding all the complex machinery underneath.
 
-### Simple Code Example: Animal Sounds
+### What is an Abstract Class?
+
+An abstract class is a blueprint that defines what related objects should do, but cannot be instantiated directly. It can contain both complete methods (concrete) and incomplete methods (abstract) that subclasses must implement.
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#3F51B5', 'primaryTextColor': '#1A237E', 'primaryBorderColor': '#283593', 'lineColor': '#E91E63', 'secondaryColor': '#00BCD4', 'tertiaryColor': '#E8EAF6'}}}%%
+flowchart TB
+    subgraph abstract["🔷 ABSTRACT CLASS"]
+        style abstract fill:#E8EAF6,stroke:#3F51B5,stroke-width:3px,color:#1A237E
+        A1["✅ Can have instance variables"]
+        A2["✅ Can have constructors"]
+        A3["✅ Can have concrete methods<br/>(with implementation)"]
+        A4["✅ Can have abstract methods<br/>(without implementation)"]
+        A5["❌ Cannot be instantiated directly"]
+    end
+    
+    subgraph concrete["🟢 CONCRETE CLASS"]
+        style concrete fill:#E8F5E9,stroke:#4CAF50,stroke-width:3px,color:#1B5E20
+        C1["✅ MUST implement all<br/>abstract methods"]
+        C2["✅ Can override concrete methods"]
+        C3["✅ Can add new methods"]
+        C4["✅ CAN be instantiated"]
+    end
+    
+    abstract --> |"extends"| concrete
+    
+    classDef abstractNode fill:#C5CAE9,stroke:#3F51B5,stroke-width:2px,color:#1A237E
+    classDef concreteNode fill:#C8E6C9,stroke:#4CAF50,stroke-width:2px,color:#1B5E20
+    
+    class A1,A2,A3,A4,A5 abstractNode
+    class C1,C2,C3,C4 concreteNode
+```
+
+### Code Example: Animal Sounds
 Let's create a simple system for animal sounds:
 
 ```mermaid
@@ -211,16 +243,16 @@ public abstract class Shape {
 }
 ```
 
-#### Step 2: Create a calss named `Circle` which extends the `Shape` class
+#### Step 2: Create a class named `Circle` which extends the `Shape` class
 - Add a `radius` instance variable (type `double`)
 - Add a constructor that takes `color` and `radius` as parameters
-- Implements the `getArea()` method using the formula: `π × radius²`
+- Implement the `getArea()` method using the formula: `π × radius²`
   - Hint: Use `Math.PI * radius * radius`
 
-#### Step 3: Create a class named `Square` whcih extends the `Shape` class
+#### Step 3: Create a class named `Square` which extends the `Shape` class
 - Add a `sideLength` instance variable (type `double`)
 - Add a constructor that takes `color` and `sideLength` as parameters
-- Implements the `getArea()` method using the formula: `sideLength × sideLength`
+- Implement the `getArea()` method using the formula: `sideLength × sideLength`
 
 #### Step 4: Create the `Main` class to test your shapes
 ```java
@@ -241,154 +273,7 @@ public class Main {
 
 > **Note:** We use `Shape` as the reference type (`Shape circle = ...`) instead of `Circle` to demonstrate polymorphism—the same principle shown in the Animal example above.
 
-## 2. Abstract Classes
-
-### Learning Objective
-Understand what abstract classes are and how they help us create a blueprint for related objects.
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#3F51B5', 'primaryTextColor': '#1A237E', 'primaryBorderColor': '#283593', 'lineColor': '#E91E63', 'secondaryColor': '#00BCD4', 'tertiaryColor': '#E8EAF6'}}}%%
-flowchart TB
-    subgraph abstract["🔷 ABSTRACT CLASS"]
-        style abstract fill:#E8EAF6,stroke:#3F51B5,stroke-width:3px,color:#1A237E
-        A1["✅ Can have instance variables"]
-        A2["✅ Can have constructors"]
-        A3["✅ Can have concrete methods<br/>(with implementation)"]
-        A4["✅ Can have abstract methods<br/>(without implementation)"]
-        A5["❌ Cannot be instantiated directly"]
-    end
-    
-    subgraph concrete["🟢 CONCRETE CLASS (extends abstract)"]
-        style concrete fill:#E8F5E9,stroke:#4CAF50,stroke-width:3px,color:#1B5E20
-        C1["✅ MUST implement all<br/>abstract methods"]
-        C2["✅ Can override concrete methods"]
-        C3["✅ Can add new methods"]
-        C4["✅ CAN be instantiated"]
-    end
-    
-    abstract --> |"extends"| concrete
-    
-    classDef abstractNode fill:#C5CAE9,stroke:#3F51B5,stroke-width:2px,color:#1A237E
-    classDef concreteNode fill:#C8E6C9,stroke:#4CAF50,stroke-width:2px,color:#1B5E20
-    
-    class A1,A2,A3,A4,A5 abstractNode
-    class C1,C2,C3,C4 concreteNode
-```
-
-### Simple Example: Remote Controls
-Let's create a simple remote control system:
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#673AB7', 'primaryTextColor': '#311B92', 'primaryBorderColor': '#512DA8', 'lineColor': '#FF9800', 'secondaryColor': '#8BC34A', 'tertiaryColor': '#EDE7F6', 'classText': '#311B92'}}}%%
-classDiagram
-    class RemoteControl {
-        <<abstract>>
-        #boolean isOn
-        #String deviceName
-        +RemoteControl(String deviceName)
-        +powerButton()* void
-        +volumeUp()* void
-        +volumeDown()* void
-        +displayStatus() void
-    }
-    
-    class TVRemote {
-        +TVRemote()
-        +powerButton() void
-        +volumeUp() void
-        +volumeDown() void
-    }
-    
-    RemoteControl <|-- TVRemote : extends
-    
-    note for RemoteControl "📺 Abstract Blueprint\nDefines what ALL remotes must do"
-    note for TVRemote "🎮 Concrete Implementation\nProvides TV-specific behavior"
-```
-
-```java
-public abstract class RemoteControl {
-    protected boolean isOn;
-    protected String deviceName;
-    
-    public RemoteControl(String deviceName) {
-        this.deviceName = deviceName;
-        this.isOn = false;
-    }
-    
-    // All remote controls must implement these
-    public abstract void powerButton();
-    public abstract void volumeUp();
-    public abstract void volumeDown();
-    
-    // All remote controls can use this
-    public void displayStatus() {
-        System.out.println(deviceName + " is " + (isOn ? "ON" : "OFF"));
-    }
-}
-
-public class TVRemote extends RemoteControl {
-    public TVRemote() {
-        super("TV");
-    }
-    
-    @Override
-    public void powerButton() {
-        isOn = !isOn;
-        System.out.println("TV turning " + (isOn ? "on" : "off"));
-    }
-    
-    @Override
-    public void volumeUp() {
-        if (isOn) {
-            System.out.println("TV volume increasing");
-        }
-    }
-    
-    @Override
-    public void volumeDown() {
-        if (isOn) {
-            System.out.println("TV volume decreasing");
-        }
-    }
-}
-```
-
-### DIY Exercise: Vehicles
-Create a simple vehicle system:
-
-1. Create an abstract `Vehicle` class with:
-   - Instance Variable: brand
-   - Regular method: displayInfo()
-   - Abstract methods: startEngine(), stopEngine()
-
-2. Create two types of vehicles the inherit from the abstract Vehicle class:
-   - Car
-   - Motorcycle
-
-3. Inside the Main class in the main() method, create two new Vehicles, Car and Motorcycle, and test all their methods. 
-
-Example solution for Vehicle class:
-```java
-public abstract class Vehicle {
-    protected String brand;
-    protected String model;
-    
-    public Vehicle(String brand, String model) {
-        this.brand = brand;
-        this.model = model;
-    }
-
-    // Regular concrete method with body and implementation
-    public void displayInfo() {
-        System.out.println("This is a " + brand + " " + model);
-    }
-
-    // Abstract methods go below here. They will just be method signatures.
-
-}
-```
-
-## 3. Interfaces
+## 2. Interfaces
 
 ### Learning Objective
 Understand interfaces as contracts that classes must follow.
@@ -521,7 +406,7 @@ public interface GameCharacter {
 
 Each should implement the methods in their own way.
 
-## 4. Abstract Classes vs. Interfaces
+## 3. Abstract Classes vs. Interfaces
 
 ### Learning Objective
 Understand when to use abstract classes versus interfaces.
@@ -716,7 +601,7 @@ public abstract class Person {
 
 3. Create a `Student` class that extends `Person` and implements `Teachable`
 
-## 5. Practical Applications
+## 4. Practical Applications
 
 ### Learning Objective
 See how abstraction works in a real-world example.
